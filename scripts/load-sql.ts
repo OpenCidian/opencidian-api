@@ -47,12 +47,27 @@ for await (const line of lines(`${src}/chars.jsonl`)) {
 }
 if (buf.length) write("chars", buf, buf.length);
 
-// Entries: HSK first (lowest level first), then the rest in release order
+// Entries, most useful first (no frequency list yet, so by kind):
+//   0-9  HSK, lowest level first
+//   10   everyday words: 1-3 characters, with Vietnamese, not a name or a variant
+//   11   4 characters (mostly chengyu), with Vietnamese
+//   12   the rest that is neither a name nor a variant (5+ characters, English only)
+//   13   variant / cross-reference entries ("variant of 着", "see 什麼")
+//   14   proper names (capitalised pinyin: places, people)
+const VARIANT = /(variant of|^see [^ ]|\bused in [^ ])/i;
+function tier(line: string, r: ReturnType<typeof entryRow>): number {
+  if (r.hsk !== null) return r.hsk;
+  const e = JSON.parse(line) as { pinyinNum: string; en: { senses: string[] } };
+  if (/[A-Z]/.test(e.pinyinNum)) return 14;
+  if (e.en.senses.length <= 2 && e.en.senses.some((s) => VARIANT.test(s))) return 13;
+  if (!r.hasVi) return 12;
+  return r.len <= 3 ? 10 : r.len === 4 ? 11 : 12;
+}
 const rows: { r: ReturnType<typeof entryRow>; order: number }[] = [];
 let i = 0;
 for await (const line of lines(`${src}/entries.jsonl`)) {
   const r = entryRow(line, lineHash(line));
-  rows.push({ r, order: (r.hsk ?? 99) * 1e6 + i++ });
+  rows.push({ r, order: tier(line, r) * 1e6 + i++ });
 }
 rows.sort((a, b) => a.order - b.order);
 for (let k = 0; k < rows.length; k += ENTRIES_PER_FILE) {
