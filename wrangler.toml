@@ -3,9 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Workers Paid: a full sync parses the whole release (12 MB gzip, 125K entries) in one request.
-[limits]
-cpu_ms = 300000
+# Workers Free for now: no CPU limit setting (Free is 10 ms, set by Cloudflare), so POST /internal/sync
+# can't run here and SYNC_SECRET stays unset (the route answers 503). Releases are loaded from a Mac with
+# scripts/load-sql.ts + scripts/load-day.ts, under D1 Free's 100K rows written a day.
+# On Workers Paid, bring back the limit below and set SYNC_SECRET:
+# [limits]
+# cpu_ms = 300000
 
 [observability]
 enabled = true
