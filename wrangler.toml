@@ -13,7 +13,7 @@ enabled = true
 [[d1_databases]]
 binding = "DB"
 database_name = "opencidian"
-database_id = "00000000-0000-0000-0000-000000000000" # set after `wrangler d1 create opencidian`
+database_id = "f3f5decf-c54c-4cbf-983d-23019fdafe5b"
 migrations_dir = "migrations"
 
 # Suggestions open public GitHub issues: a few per caller per minute.
