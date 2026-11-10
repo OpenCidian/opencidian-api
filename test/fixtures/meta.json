@@ -1,0 +1,72 @@
+{
+  "name": "OpenCidian",
+  "version": "2026-11-10+local",
+  "builtAt": "2026-11-10T08:36:57.449Z",
+  "commit": null,
+  "license": {
+    "id": "CC-BY-SA-4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "OpenCidian by Perxel (github.com/OpenCidian), built from CC-CEDICT, published by MDBG; CEDICT © 1997, 1998 Paul Andrew Denisowski; CVDICT by Phong Phan; Unicode Han Database (Unihan), © Unicode, Inc.; Make Me a Hanzi by Shaunak Kishore (dictionary.txt, derived from Unihan and CJKlib); Complete HSK Vocabulary by Yanis Zafirópulos (drkameleon); Thiều Chửu, Hán Việt tự điển (1942); digital edition proofread by Đặng Thế Kiệt, Lê Văn Đặng, Nguyễn Hữu Vinh; file by Phan Cát Tú (catusf/tudien, CC0)"
+  },
+  "sources": [
+    {
+      "id": "cc-cedict",
+      "name": "CC-CEDICT",
+      "version": "2026-11-09T04:23:50Z",
+      "sha256": "2e8921a90b9abdca2ce78b8a6af104368f848681b7afe8020043f500fbe0238a",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "credit": "CC-CEDICT, published by MDBG; CEDICT © 1997, 1998 Paul Andrew Denisowski"
+    },
+    {
+      "id": "cvdict",
+      "name": "CVDICT",
+      "version": "main@c379d909 (2025-02-09; after release v1.0.0)",
+      "sha256": "4dde4b204193efa9c192d7f7daeab1bb579c8ccd7c41ed90d1b6caee22ba0948",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://raw.githubusercontent.com/ph0ngp/CVDICT/c379d909e308343a247e51619f7839a2060a271c/CVDICT.u8",
+      "credit": "CVDICT by Phong Phan"
+    },
+    {
+      "id": "unihan",
+      "name": "Unihan (Unicode 18.0.0)",
+      "version": "18.0.0",
+      "sha256": "4c93ea9c1f636451729a840978f1667a53886af37ba854fdcce109721c63d43e",
+      "license": "Unicode-3.0",
+      "url": "https://www.unicode.org/Public/18.0.0/ucd/Unihan.zip",
+      "credit": "Unicode Han Database (Unihan), © Unicode, Inc."
+    },
+    {
+      "id": "makemeahanzi",
+      "name": "Make Me a Hanzi (dictionary.txt)",
+      "version": "master@bddc96d4 (2026-03-08)",
+      "sha256": "744bb05d5b0742e9ee35c37791f94d56a173349b3367569e7ca11e510364d203",
+      "license": "LGPL-3.0-or-later",
+      "url": "https://raw.githubusercontent.com/skishore/makemeahanzi/bddc96d41bef78427ed0e034e9f7e31d71fd1b92/dictionary.txt",
+      "credit": "Make Me a Hanzi by Shaunak Kishore (dictionary.txt, derived from Unihan and CJKlib)"
+    },
+    {
+      "id": "hsk",
+      "name": "Complete HSK Vocabulary",
+      "version": "main@7ac65bf1 (2026-03-23)",
+      "sha256": "52d8e64ba65a6db4a38ea34302c6de5df53cdb5145254b25edcbf93b80676434",
+      "license": "MIT",
+      "url": "https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/7ac65bf1a6387d35f1ade478906172a19311c7f9/complete.min.json",
+      "credit": "Complete HSK Vocabulary by Yanis Zafirópulos (drkameleon)"
+    },
+    {
+      "id": "thieu-chuu",
+      "name": "Thiều Chửu, Hán Việt tự điển (digitized by catusf/tudien)",
+      "version": "master@a7dd918e (2025-12-19)",
+      "sha256": "6266861966039b984126d0fb2852c918727b7e4930888c7ed2a31e66e0f68f28",
+      "license": "CC0-1.0",
+      "url": "https://raw.githubusercontent.com/catusf/tudien/a7dd918ecc67de8c2d15034f885d919b9295eba4/dict/TudienThienChuu.tab",
+      "credit": "Thiều Chửu, Hán Việt tự điển (1942); digital edition proofread by Đặng Thế Kiệt, Lê Văn Đặng, Nguyễn Hữu Vinh; file by Phan Cát Tú (catusf/tudien, CC0)"
+    }
+  ],
+  "counts": {
+    "entries": 125397,
+    "chars": 14534,
+    "corrections": 1
+  }
+}

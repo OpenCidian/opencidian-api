@@ -1,0 +1,32 @@
+{
+  "name": "opencidian-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenCidian API by Perxel: a Cloudflare Worker over D1, loaded from opencidian-data's releases. Internal: read by opencidian-mcp and hieu-chu-han.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev --local --port 8788",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "fixtures": "tsx scripts/make-fixtures.ts",
+    "cf-typegen": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply opencidian --local",
+    "db:migrate:remote": "wrangler d1 migrations apply opencidian --remote"
+  },
+  "dependencies": {
+    "hono": "^4.13.17",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.159.0"
+  },
+  "packageManager": "pnpm@10.22.0",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd", "sharp"]
+  }
+}

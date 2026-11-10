@@ -1,0 +1,35 @@
+name = "opencidian-api"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers Paid: a full sync parses the whole release (12 MB gzip, 125K entries) in one request.
+[limits]
+cpu_ms = 300000
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "opencidian"
+database_id = "00000000-0000-0000-0000-000000000000" # set after `wrangler d1 create opencidian`
+migrations_dir = "migrations"
+
+# Suggestions open public GitHub issues: a few per caller per minute.
+[[ratelimits]]
+name = "CORRECTIONS_LIMITER"
+namespace_id = "2001"
+simple = { limit = 5, period = 60 }
+
+[vars]
+DATA_REPO = "OpenCidian/opencidian-data"
+GITHUB_API_URL = "https://api.github.com"
+
+# Secrets (`npx wrangler secret put <NAME>`; locally in .dev.vars, see .dev.vars.example):
+#   MCP_SECRET    sent by opencidian-mcp in X-MCP-Secret over its service binding
+#   API_SECRET    sent by hieu-chu-han's server in X-API-Secret
+#                 Every /v1 route answers 404 without one of the two. Unset: closed, never open.
+#   SYNC_SECRET   sent by opencidian-data's release workflow in X-Sync-Secret to POST /internal/sync
+#   GITHUB_TOKEN  fine-grained token on OpenCidian/opencidian-data: Contents read (release assets),
+#                 Issues read and write (POST /v1/corrections)
